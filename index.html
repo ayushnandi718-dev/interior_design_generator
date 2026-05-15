@@ -145,7 +145,31 @@
                             <p class="mt-4 text-lg font-bold">Upload a room and describe your goal.</p>
                             <p class="mt-2 text-sm leading-6 text-slate-400">You will receive a structured design brief with style direction, color palette, furniture layout, lighting, decor, and shopping priorities.</p>
                         </div>
-                        <div id="results" class="mt-8 grid gap-4"></div>
+                      <div id="results" class="mt-8 grid gap-4"></div>
+
+<!-- AI Generated Room -->
+<div id="aiRoomContainer" class="hidden mt-8">
+    <h3 class="text-2xl font-extrabold mb-4">
+        AI Redesigned Room
+    </h3>
+
+    <img
+        id="aiRoomImage"
+        class="w-full rounded-3xl border border-white/10"
+    />
+</div>
+
+<!-- Recommended Items -->
+<div id="itemsContainer" class="hidden mt-8">
+    <h3 class="text-2xl font-extrabold mb-5">
+        Suggested Items
+    </h3>
+
+    <div
+        id="itemsGrid"
+        class="grid gap-4 sm:grid-cols-2"
+    ></div>
+</div>
                     </aside>
                 </div>
             </div>
