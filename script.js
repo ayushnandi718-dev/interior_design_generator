@@ -181,7 +181,7 @@ const suggestedItems = [
         name: "Minimal Wooden Desk",
         description:
             "Perfect for modern study setups.",
-        price: "$120",
+        price: "₹9,999",
         image:
             "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80"
     },
@@ -190,7 +190,7 @@ const suggestedItems = [
         name: "Warm Floor Lamp",
         description:
             "Creates cozy ambient lighting.",
-        price: "$65",
+        price: "₹3,499",
         image:
             "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80"
     },
@@ -199,7 +199,7 @@ const suggestedItems = [
         name: "Soft Neutral Rug",
         description:
             "Adds warmth and texture.",
-        price: "$80",
+        price: "₹5,299",
         image:
             "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
     },
@@ -208,7 +208,7 @@ const suggestedItems = [
         name: "Indoor Plant",
         description:
             "Fresh natural aesthetic.",
-        price: "$25",
+        price: "₹799",
         image:
             "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80"
     }
@@ -271,34 +271,34 @@ suggestedItems.forEach(item => {
     card.className =
         "soft-card rounded-3xl overflow-hidden";
 
-    card.innerHTML = `
-        <img
-            src="${item.image}"
-            class="h-52 w-full object-cover"
-        />
+  card.innerHTML = `
+    <img
+        src="${item.image}"
+        class="h-52 w-full object-cover"
+    />
 
-        <div class="p-5">
-            <h4 class="font-extrabold text-lg">
-                ${item.name}
-            </h4>
+    <div class="p-5">
+        <h4 class="font-extrabold text-lg">
+            ${item.name}
+        </h4>
 
-            <p class="text-sm text-slate-400 mt-2">
-                ${item.description}
-            </p>
+        <p class="text-sm text-slate-400 mt-2">
+            ${item.description}
+        </p>
 
-            <div class="mt-4 flex items-center justify-between">
-                <span class="font-bold text-teal-200">
-                    ${item.price}
-                </span>
+        <div class="mt-4 flex items-center justify-between">
+            <span class="font-bold text-teal-200">
+                ${item.price}
+            </span>
 
-                <button
-                    class="btn-secondary px-4 py-2 rounded-xl text-sm"
-                >
-                    View
-                </button>
-            </div>
+            <button
+                class="btn-secondary px-4 py-2 rounded-xl text-sm"
+            >
+                View
+            </button>
         </div>
-    `;
+    </div>
+`;
 
     return card;
 }
