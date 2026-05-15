@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RoomRevamp AI</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <h1>RoomRevamp AI</h1>
+
+    <p>
+      Upload your room and get AI redesign ideas instantly
+    </p>
+
+    <div class="container">
+
+      <!-- LEFT -->
+
+      <div class="upload-card">
+
+        <div id="uploadBox" class="upload-box">
+
+          <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            hidden
+          >
+
+          <img id="previewImage">
+
+          <div id="uploadContent">
+
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+            <h3>Upload Room Image</h3>
+
+            <p>Click here or drag image</p>
+
+          </div>
+
+        </div>
+
+        <textarea
+          id="prompt"
+          placeholder="Describe the purpose and vibe..."
+        ></textarea>
+
+        <button id="generateBtn">
+          Generate Design
+        </button>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="result-card">
+
+        <h2>AI Redesigned Room</h2>
+
+        <img
+          id="resultImage"
+          class="hidden"
+        >
+
+        <div id="placeholder">
+
+          <i class="fa-solid fa-couch"></i>
+
+          <p>
+            Your AI room design will appear here
+          </p>
+
+        </div>
+
+        <div id="itemsContainer" class="hidden">
+
+          <h2>Suggested Items</h2>
+
+          <div id="itemsGrid"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
+  <footer>2026 All rights are reserverd to Ayush Nandi</footer>
+</body>
+</html>
