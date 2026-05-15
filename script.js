@@ -119,12 +119,106 @@
             const profile = chooseProfile(goal);
             const paletteText = profile.palette.map(color => `<span class="mr-2 mt-2 inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-slate-200">${color}</span>`).join('');
             const roomContext = `For the current ${roomType.value.toLowerCase()}, focus every change on this purpose: “${goal}”`;
+             const aiRoomContainer =
+             document.getElementById("aiRoomContainer");
+         
+            const aiRoomImage =
+              document.getElementById("aiRoomImage");
+         
+             const itemsContainer =
+             document.getElementById("itemsContainer");
+         
+            const itemsGrid =
+             document.getElementById("itemsGrid");
+                     resultTitle.textContent = profile.title;
+                     confidenceBadge.textContent = roomPhoto.files.length ? 'Photo added' : 'Text plan';
+                     emptyState.classList.add('hidden');
+                     results.innerHTML = '';
+             // Fake AI generated room preview
+const roomImages = {
+    gaming:
+        "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=1200&q=80",
 
-            resultTitle.textContent = profile.title;
-            confidenceBadge.textContent = roomPhoto.files.length ? 'Photo added' : 'Text plan';
-            emptyState.classList.add('hidden');
-            results.innerHTML = '';
+    cozy:
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
 
+    luxury:
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+
+    study:
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+};
+
+let selectedImage = roomImages.cozy;
+
+if (goal.toLowerCase().includes("gaming")) {
+    selectedImage = roomImages.gaming;
+}
+
+if (
+    goal.toLowerCase().includes("study") ||
+    goal.toLowerCase().includes("office")
+) {
+    selectedImage = roomImages.study;
+}
+
+if (
+    goal.toLowerCase().includes("luxury")
+) {
+    selectedImage = roomImages.luxury;
+}
+
+aiRoomImage.src = selectedImage;
+
+aiRoomContainer.classList.remove("hidden");
+
+         itemsContainer.classList.remove("hidden");
+
+itemsGrid.innerHTML = "";
+
+const suggestedItems = [
+    {
+        name: "Minimal Wooden Desk",
+        description:
+            "Perfect for modern study setups.",
+        price: "$120",
+        image:
+            "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        name: "Warm Floor Lamp",
+        description:
+            "Creates cozy ambient lighting.",
+        price: "$65",
+        image:
+            "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        name: "Soft Neutral Rug",
+        description:
+            "Adds warmth and texture.",
+        price: "$80",
+        image:
+            "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+    },
+
+    {
+        name: "Indoor Plant",
+        description:
+            "Fresh natural aesthetic.",
+        price: "$25",
+        image:
+            "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80"
+    }
+];
+
+suggestedItems.forEach(item => {
+    itemsGrid.appendChild(
+        createItemCard(item)
+    );
+});
             const cards = [
                 createResultCard('fa-solid fa-bullseye', 'Room purpose', roomContext, 0),
                 createResultCard('fa-solid fa-palette', 'Color palette', paletteText, 80, true),
@@ -171,3 +265,40 @@
             roomGoal.value = 'Make this bedroom a cozy study room with calm colors, smart storage, a small reading corner, and better lighting for night work.';
             designForm.dispatchEvent(new Event('submit'));
         });
+        function createItemCard(item) {
+    const card = document.createElement("div");
+
+    card.className =
+        "soft-card rounded-3xl overflow-hidden";
+
+    card.innerHTML = `
+        <img
+            src="${item.image}"
+            class="h-52 w-full object-cover"
+        />
+
+        <div class="p-5">
+            <h4 class="font-extrabold text-lg">
+                ${item.name}
+            </h4>
+
+            <p class="text-sm text-slate-400 mt-2">
+                ${item.description}
+            </p>
+
+            <div class="mt-4 flex items-center justify-between">
+                <span class="font-bold text-teal-200">
+                    ${item.price}
+                </span>
+
+                <button
+                    class="btn-secondary px-4 py-2 rounded-xl text-sm"
+                >
+                    View
+                </button>
+            </div>
+        </div>
+    `;
+
+    return card;
+}
